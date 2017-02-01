@@ -42,9 +42,11 @@ editmark markedit
 ```
 
 * [X] : **Show Marks**
- ```sh
+```sh
 editshow
- ```
+ markedit    = ~/.oh-my-zsh/custom/plugins/markedit/markedit.plugin.zsh # Mark with out sudo permition 
+ * markedit  = ~/.oh-my-zsh/custom/plugins/markedit/markedit.plugin.zsh # mark with sudo permition 
+```
 
 ### Settings
 

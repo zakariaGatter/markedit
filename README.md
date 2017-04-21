@@ -1,7 +1,7 @@
 
 # MarkEdit 
 
-a very simple Oh-My-ZSH Plugin to mark Files and Edit them 
+a very simple Oh-My-ZSH Plugin to mark Files and Edit them With Autocompletion for exist Marks 
 
 ## INSTALATION
 
@@ -44,8 +44,8 @@ editmark markedit
 * [X] : **Show Marks**
 ```sh
 editshow
- markedit    = ~/.oh-my-zsh/custom/plugins/markedit/markedit.plugin.zsh # Mark with out sudo permition 
- * markedit  = ~/.oh-my-zsh/custom/plugins/markedit/markedit.plugin.zsh # mark with sudo permition 
+ markedit      ~/.oh-my-zsh/custom/plugins/markedit/markedit.plugin.zsh # Mark with out sudo permition 
+ * markedit    ~/.oh-my-zsh/custom/plugins/markedit/markedit.plugin.zsh # mark with sudo permition 
 ```
 
 ### Settings

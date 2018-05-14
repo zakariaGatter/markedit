@@ -1,12 +1,14 @@
 
 # MarkEdit 
 
-a very simple Oh-My-ZSH Plugin to mark Files and Edit them With Autocompletion for exist Marks 
+a very simple (zsh / bash) Plugin to mark Files and Edit them With Autocompletion for exist Marks 
+
+[![asciicast](https://asciinema.org/a/cHg8JbsNiO66WHlwd8hmAOKll.png)](https://asciinema.org/a/cHg8JbsNiO66WHlwd8hmAOKll)
 
 ## INSTALATION
 
 ```sh
-git clone https://github.com/zakariaGatter/MarkEdit ~/.oh-my-zsh/custom/plugins/markedit
+git clone https://github.com/zakariaGatter/MarkEdit /path/to/markedit
 ```
 
 ### Add MarkEdit Plugin to ~.zshrc
@@ -14,7 +16,30 @@ git clone https://github.com/zakariaGatter/MarkEdit ~/.oh-my-zsh/custom/plugins/
 ---
 
 ```sh
-plugins=(... markedit ... )
+source /path/to/markedit/markedit
+```
+
+#### HELP
+
+```
+    MARK EDIT (20-05-2018)
+    Written by Zakaria Barkouk (zakaria.gatter@gmail.com)
+
+    Mark your file To easy Access
+
+OPTS :       
+        ea          Add Mark File
+        er          Remove Mark File
+        es          Show All Mark File's
+        em          Edit Mark File 
+
+EXAMPLE :  
+        ea bashrc ~/.bashrc     ( add 'bashrc' Mark with out sudo Permision )
+        ea _ bashrc ~/.bashrc   ( add 'bashrc' Mark with sudo Permision )
+        em bashrc               ( Edit to 'bashrc' Mark)
+        er bashrc ...           ( Remove 'bashrc' Mark and suport multi Delete)
+
+File    :   FILE_GATE=~/.config/file-gate
 ```
 
 #### Usage
@@ -24,45 +49,30 @@ plugins=(... markedit ... )
 * [X] : **Add Mark**
 
 ``` sh
-editadd makedit ~/.oh-my-zsh/custom/plugins/markedit/markedit.plugin.zsh
+ea makedit /path/to/markedit/markedit
 ```
 Or if the File need Sudo Permition 
 ``` sh 
-editadd sudo markedit ~/.oh-my-zsh/custom/plugins/markedit/markedit.plugin.zsh
+ea _ markedit /path/to/markedit/markedit.plugin.zsh
 ```
 
 * [X] : **Remove Mark**
 ```sh
-editdel markedit
+er markedit
 ```
 
 * [X] : **Edit Mark**
 ```sh
-editmark markedit
+em markedit
 ```
 
 * [X] : **Show Marks**
 ```sh
-editshow
- markedit      ~/.oh-my-zsh/custom/plugins/markedit/markedit.plugin.zsh # Mark with out sudo permition 
- * markedit    ~/.oh-my-zsh/custom/plugins/markedit/markedit.plugin.zsh # mark with sudo permition 
+es
+markedit        /path/to/markedit/markedit # Mark with out sudo permition 
+_markedit       /path/to/markedit/markedit # mark with sudo permition 
 ```
 
-### Settings
-
----
-
-To Specific **MarkEdit** Config File Add this line to your ```~/.zshrc```
-
-> MARKEDIT_FILE="Name_of_file"
-
-default Config File 
-
-* MARKEDIT_FILE="mark\_edit"
-
-``` Config file will always be in this PATH "~/.$MARKEDIT_FILE"```
-
-> Default editor is Your `$EDITOR`
 
 ### [!] Notes
 

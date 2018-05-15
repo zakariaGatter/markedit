@@ -77,7 +77,7 @@ _markedit       /path/to/markedit/markedit # mark with sudo permition
 
 [Fiverr](https://www.fiverr.com/zakariagatter)
 
-[Donate](paypal.me/ZGatter)
+[Donate](https://www.paypal.me/ZGatter)
 
 ### [!] Notes
 

@@ -73,6 +73,11 @@ markedit        /path/to/markedit/markedit # Mark with out sudo permition
 _markedit       /path/to/markedit/markedit # mark with sudo permition 
 ```
 
+### Support 
+
+[Fiverr](https://www.fiverr.com/zakariagatter)
+
+[Donate](paypal.me/ZGatter)
 
 ### [!] Notes
 

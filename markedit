@@ -29,7 +29,7 @@ EXAMPLE :
         em bashrc               ( Edit to 'bashrc' Mark)
         er bashrc ...           ( Remove 'bashrc' Mark and suport multi Delete)
 
-File    :   FILE_GATE=$FILE_GATE
+File    :   FILE_GATE=\"~/.config/file-gate\"
 "
 return 0
 }
@@ -40,7 +40,7 @@ ea () {
 [ "$#" -lt "2" ] && { echo " $0 : no enough argument " && return 1}
 
 [ "$1" = "_" ] && {
-    _S_CHECK_=$(grep "^_$2=*" $FILE_GATE)
+    _S_CHECK_=$(grep "^_$2 = *" $FILE_GATE)
 
     [ -n "$_S_CHECK_" ] && {
         echo "[ $2 ] Already Exist "
@@ -55,7 +55,7 @@ ea () {
         }
     }
 } || {
-    _CHECK_=$(grep "^$1=*" $FILE_GATE)
+    _CHECK_=$(grep "^$1 = *" $FILE_GATE)
     
     [ -n "$_CHECK_" ] && {
         echo "[ $1 ] Already Exist "
@@ -79,8 +79,8 @@ er (){
 D_DEP=0
 
 for E in ${@} ; do 
-    _SD_CHECK_=$(grep "^_$E=*" $FILE_GATE)
-    _D_CHECK_=$(grep "^$E=*" $FILE_GATE)
+    _SD_CHECK_=$(grep "^_$E = *" $FILE_GATE)
+    _D_CHECK_=$(grep "^$E = *" $FILE_GATE)
 
     [ -z "$_SD_CHECK_"  -a -z "$_D_CHECK_" ] && {
         echo "[ $E ] Deosn't Exist "
@@ -104,8 +104,8 @@ cat $FILE_GATE | column -t | sort -u
 
 #edit mark 
 em () {
-_SE_CHECK_=$(grep "^_$1=*" $FILE_GATE)
-_E_CHECK_=$(grep "^$1=*" $FILE_GATE)
+_SE_CHECK_=$(grep "^_$1 = *" $FILE_GATE)
+_E_CHECK_=$(grep "^$1 = *" $FILE_GATE)
 
 [ -z "$_SE_CHECK_" -a -z "$_E_CHECK_" ] && {
     echo "[ $1 ] Deosn't Exist "
@@ -128,7 +128,7 @@ _E_CHECK_=$(grep "^$1=*" $FILE_GATE)
 # AUTO COMPLITION  for zsh 
 function F_G_complete_zsh {
     if [[ "$(cat "${FILE_GATE}" | wc -l)" -gt 0 ]];then 
-	reply=($(cut -d= -f1 $FILE_GATE | sed -e "s:_::g"))
+	reply=($(cut -d= -f1 $FILE_GATE | sed -e "s:^_::g"))
     fi
 }
 
@@ -137,7 +137,7 @@ function F_G_complete_bash {
     local curw
     COMPREPLY=()
     curw=${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=($(compgen -W "$(cut -d= -f1 $FILE_GATE | sed -e "s:_::g")" -- $curw))
+    COMPREPLY=($(compgen -W "$(cut -d= -f1 $FILE_GATE | sed -e "s:^_::g")" -- $curw))
     return 0
 }
 

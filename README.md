@@ -75,11 +75,11 @@ _markedit       /path/to/markedit/markedit # mark with sudo permition
 
 ### Support 
 
-[Fiverr](https://www.fiverr.com/zakariagatter)
+    * [Fiverr](https://www.fiverr.com/zakariagatter)
+    * [Donate](https://www.paypal.me/ZGatter)
 
-[Donate](https://www.paypal.me/ZGatter)
 
-### [!] Notes
+### Notes
 
 If You Found any issues or have new ideos please send me a mail to :
 
@@ -88,3 +88,9 @@ If You Found any issues or have new ideos please send me a mail to :
 ``` sh
 zakaria.gatter@gmail.com
 ```
+
+#### You may like 
+
+ * [Powergate Theme](https://github.com/zakariaGatter/Powergate)
+ * [MarkGate](https://github.com/zakariaGatter/MarkGate)
+ * [i3blocks-Gate](https://github.com/zakariaGatter/i3blocks-gate)

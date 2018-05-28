@@ -32,14 +32,16 @@ OPTS :
         er          Remove Mark File
         es          Show All Mark File's
         em          Edit Mark File 
+        ee          change or Edit Exist Mark 
 
 EXAMPLE :  
         ea bashrc ~/.bashrc     ( add 'bashrc' Mark with out sudo Permision )
         ea _ bashrc ~/.bashrc   ( add 'bashrc' Mark with sudo Permision )
         em bashrc               ( Edit to 'bashrc' Mark)
         er bashrc ...           ( Remove 'bashrc' Mark and suport multi Delete)
+        ee bashrc               (Edit Exist mark like change the mark name or File) 
 
-File    :   FILE_GATE=~/.config/file-gate
+File    :   FILE_GATE="~/.config/file-gate"
 ```
 
 #### Usage
@@ -71,6 +73,11 @@ em markedit
 es
 markedit        /path/to/markedit/markedit # Mark with out sudo permition 
 _markedit       /path/to/markedit/markedit # mark with sudo permition 
+```
+
+* [X] : **Change Mark Name or File**
+```sh
+ee markedit
 ```
 
 ### Support 

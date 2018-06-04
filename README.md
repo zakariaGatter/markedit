@@ -1,7 +1,7 @@
 
 # MarkEdit 
 
-a very simple (zsh / bash) Plugin to mark Files and Edit them With Autocompletion for exist Marks 
+a very simple (zsh / bash) Plugin to mark Files and Edit them With Autocompletion for existing Marks 
 
 [![asciicast](https://asciinema.org/a/cHg8JbsNiO66WHlwd8hmAOKll.png)](https://asciinema.org/a/cHg8JbsNiO66WHlwd8hmAOKll)
 
@@ -88,7 +88,7 @@ ee markedit
 
 ### Notes
 
-If You Found any issues or have new ideos please send me a mail to :
+If You Found any issues or have new ideas please send me a mail to :
 
 **Gmail :**
 

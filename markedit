@@ -144,8 +144,8 @@ cat $FILE_GATE | column -t | sort -u
 
 #edit mark 
 em () {
-_SE_CHECK_=$(grep -w --color=never "_$1" $FILE_GATE)
-_E_CHECK_=$(grep -w --color=never "$1" $FILE_GATE)
+_SE_CHECK_=$(grep -w --color=never "^_$1" $FILE_GATE)
+_E_CHECK_=$(grep -w --color=never "^$1" $FILE_GATE)
 
 [ -z "$_SE_CHECK_" -a -z "$_E_CHECK_" ] && {
     echo "X - [ $1 ] Deosn't Exist "

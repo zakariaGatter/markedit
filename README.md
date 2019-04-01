@@ -1,51 +1,24 @@
-
 # MarkEdit 
 
-a very simple (zsh / bash) Plugin to mark Files and Edit them With Autocompletion for existing Marks 
+## Table of Contents 
 
-[![asciicast](https://asciinema.org/a/cHg8JbsNiO66WHlwd8hmAOKll.png)](https://asciinema.org/a/cHg8JbsNiO66WHlwd8hmAOKll)
+- [About](#about)
+- [Usage](#usage)
+- [Installation](#installation)
+- [Help](#help)
 
-## INSTALATION
+## About
+[Markedit] is a very simple (zsh / bash) Plugin to mark Files and Edit them With Auto completion for existing Marks 
 
-```sh
-git clone https://github.com/zakariaGatter/MarkEdit /path/to/markedit
-```
+[Markedit] allow you to ...
 
-### Add MarkEdit Plugin to ~.zshrc
+* Mark A file to edit 
+* Mark A file to edit as root
+* Remove Marks
+* Jump and edit a Mark on the fly
+* Edit exist Marks
 
----
-
-```sh
-source /path/to/markedit/markedit
-```
-
-#### HELP
-
-```
-    MARK EDIT (20-05-2018)
-    Written by Zakaria Barkouk (zakaria.gatter@gmail.com)
-
-    Mark your file To easy Access
-
-OPTS :       
-        ea          Add Mark File
-        er          Remove Mark File
-        es          Show All Mark File's
-        em          Edit Mark File 
-        ee          change or Edit Exist Mark 
-
-EXAMPLE :  
-        ea bashrc ~/.bashrc     ( add 'bashrc' Mark with out sudo Permision )
-        ea _ bashrc ~/.bashrc   ( add 'bashrc' Mark with sudo Permision )
-        em bashrc               ( Edit to 'bashrc' Mark)
-        er bashrc ...           ( Remove 'bashrc' Mark and suport multi Delete)
-        ee bashrc               (Edit Exist mark like change the mark name or File) 
-
-File    :   FILE_GATE="~/.config/file-gate"
-```
-
-#### Usage
-
+#### Usage 
 ---
 
 * [X] : **Add Mark**
@@ -53,7 +26,7 @@ File    :   FILE_GATE="~/.config/file-gate"
 ``` sh
 ea makedit /path/to/markedit/markedit
 ```
-Or if the File need Sudo Permition 
+Or if the File need Sudo Permission 
 ``` sh 
 ea _ markedit /path/to/markedit/markedit.plugin.zsh
 ```
@@ -71,8 +44,8 @@ em markedit
 * [X] : **Show Marks**
 ```sh
 es
-markedit        /path/to/markedit/markedit # Mark with out sudo permition 
-_markedit       /path/to/markedit/markedit # mark with sudo permition 
+markedit        /path/to/markedit/markedit # Mark with out sudo Permission 
+_markedit       /path/to/markedit/markedit # mark with sudo Permission 
 ```
 
 * [X] : **Change Mark Name or File**
@@ -80,24 +53,42 @@ _markedit       /path/to/markedit/markedit # mark with sudo permition
 ee markedit
 ```
 
-### Support 
+## INSTALLATION
 
-    * [Fiverr](https://www.fiverr.com/zakariagatter)
-    * [Donate](https://www.paypal.me/ZGatter)
-
-
-### Notes
-
-If You Found any issues or have new ideas please send me a mail to :
-
-**Gmail :**
-
-``` sh
-zakaria.gatter@gmail.com
+```sh
+git clone https://gitlab.com/zakariaGatter/MarkEdit /path/to/markedit
 ```
 
-#### You may like 
+#### Add MarkEdit Plugin to ~./zshrc
 
- * [Powergate Theme](https://github.com/zakariaGatter/Powergate)
- * [MarkGate](https://github.com/zakariaGatter/MarkGate)
- * [i3blocks-Gate](https://github.com/zakariaGatter/i3blocks-gate)
+---
+
+```sh
+source /path/to/markedit/markedit
+```
+
+## HELP
+
+```
+    MARK EDIT (20-05-2018)
+    Written by Zakaria Barkouk (zakaria.gatter@gmail.com)
+
+    Mark your file To easy Access
+
+OPTS :       
+        ea          Add Mark File
+        er          Remove Mark File
+        es          Show All Mark File's
+        em          Edit Mark File 
+        ee          change or Edit Exist Mark 
+
+EXAMPLE :  
+        ea bashrc ~/.bashrc     ( add 'bashrc' Mark with out sudo Permission )
+        ea _ bashrc ~/.bashrc   ( add 'bashrc' Mark with sudo Permission )
+        em bashrc               ( Edit to 'bashrc' Mark)
+        er bashrc ...           ( Remove 'bashrc' Mark and support multi Delete)
+        ee bashrc               (Edit Exist mark like change the mark name or File) 
+
+```
+
+[MarkEdit]:https://gitlab.com/zakariaGatter/MarkEdit

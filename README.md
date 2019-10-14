@@ -1,6 +1,6 @@
-# MarkEdit 
+# MarkEdit
 
-## Table of Contents 
+## Table of Contents
 
 - [About](#about)
 - [Usage](#usage)
@@ -8,47 +8,47 @@
 - [Help](#help)
 
 ## About
-[Markedit] is a very simple (zsh / bash) Plugin to mark Files and Edit them With Auto completion for existing Marks 
+[Markedit] is a very simple (zsh / bash) Plugin to mark Files and Edit them With Auto completion for existing Marks
 
 [Markedit] allow you to ...
 
-* Mark A file to edit 
+* Mark A file to edit
 * Mark A file to edit as root
 * Remove Marks
 * Jump and edit a Mark on the fly
 * Edit exist Marks
 
-#### Usage 
+#### Usage
 ---
 
-* [X] : **Add Mark**
+* **Add Mark** :
 
 ``` sh
 ea makedit /path/to/markedit/markedit
 ```
-Or if the File need Sudo Permission 
-``` sh 
+Or if the File need Sudo Permission
+``` sh
 ea _ markedit /path/to/markedit/markedit.plugin.zsh
 ```
 
-* [X] : **Remove Mark**
+* **Remove Mark** :
 ```sh
 er markedit
 ```
 
-* [X] : **Edit Mark**
+* **Edit Mark** :
 ```sh
 em markedit
 ```
 
-* [X] : **Show Marks**
+* **Show Marks** :
 ```sh
 es
-markedit        /path/to/markedit/markedit # Mark with out sudo Permission 
-_markedit       /path/to/markedit/markedit # mark with sudo Permission 
+markedit    /path/to/markedit/markedit		# Mark with out sudo Permission
+markedit    /path/to/markedit/markedit   sudo    # mark with sudo Permission
 ```
 
-* [X] : **Change Mark Name or File**
+* **Change Mark Name or File** :
 ```sh
 ee markedit
 ```
@@ -75,19 +75,19 @@ source /path/to/markedit/markedit
 
     Mark your file To easy Access
 
-OPTS :       
+OPTS :
         ea          Add Mark File
         er          Remove Mark File
         es          Show All Mark File's
-        em          Edit Mark File 
-        ee          change or Edit Exist Mark 
+        em          Edit Mark File
+        ee          change or Edit Exist Mark
 
-EXAMPLE :  
+EXAMPLE :
         ea bashrc ~/.bashrc     ( add 'bashrc' Mark with out sudo Permission )
         ea _ bashrc ~/.bashrc   ( add 'bashrc' Mark with sudo Permission )
         em bashrc               ( Edit to 'bashrc' Mark)
         er bashrc ...           ( Remove 'bashrc' Mark and support multi Delete)
-        ee bashrc               (Edit Exist mark like change the mark name or File) 
+        ee bashrc               (Edit Exist mark like change the mark name or File)
 
 ```
 

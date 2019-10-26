@@ -3,18 +3,15 @@
 #----------------------#
 # MAKE EDIT CACHE FILE #
 #----------------------#{{{
-MARKEDIT_CACHE="$HOME/.cache/markedit.cache"
+_me_cache_="$HOME/.cache/markedit"
 # }}}
 
 #--------------#
 # HELP DIALOG  #
 #--------------#{{{
-_usage_(){
-echo -e "
-MARK EDIT
-Written by Zakaria Barkouk (zakaria.gatter@gmail.com)
-
-Mark your file To easy Access
+_me_usage_(){
+\cat <<- HELP
+[MARKEDIT] Mark your file To easy Access
 
 OPTS :
     ea          Add Mark File
@@ -30,7 +27,7 @@ EXAMPLE :
     sudo em bashrc 			( Edit 'bashrc' Mark with sudo )
     er bashrc ...           ( Remove 'bashrc' Mark and support multi Delete )
     ee bashrc               (Edit Exist mark like change the mark name or File )
-"
+HELP
 }
 #}}}
 
@@ -40,31 +37,28 @@ EXAMPLE :
 ea(){
 local mark file root
 
-[ "$#" -lt "2" -o "$#" -gt "3" ] && { _usage_; return; }
+[ "$#" -lt "2" -o "$#" -gt "3" ] && { _me_usage_; return; }
 
 if [ "$1" = "_" ]; then
-    root="$1"
-    mark="$2"
-    file="$3:P"
+    root="$1" mark="$2" file="$3:P"
 else
-    mark="$1"
-    file="$2:P"
+    mark="$1" file="$2:P"
 fi
 
 # check if the mark alredy exist
-check=$(awk -F ";" '/^'"$mark"' /{print $1}' "$MARKEDIT_CACHE")
+check=$(\awk -F ";" '/^'"$mark"' /' $_me_cache_ 2> /dev/null)
 
 if [ -n "$check" ]; then
-    echo -e "[X] - $mark mark already exist"
+    echo -e "[X] $mark: mark already exist"
 else
-    test -f "$file"  || { echo -e "[X] - $file No such File" ; return 0 ; }
+    test -f "$file"  || { echo -e "[X] $file: No such File" ; return 0 ;}
 
     if [ -n "$root" ]; then
-		echo -e "[+] - $mark Added"
-		echo "$mark ; $file ; root" >> "$MARKEDIT_CACHE"
+		echo -e "[+] $mark: Added"
+		echo "$mark ; $file ; root" >> $_me_cache_
     else
-		echo -e "[+] - $mark Added"
-		echo "$mark ; $file " >> "$MARKEDIT_CACHE"
+		echo -e "[+] $mark: Added"
+		echo "$mark ; $file " >> $_me_cache_
     fi
 fi
 }
@@ -74,17 +68,17 @@ fi
 # DELETE MARK #
 #-------------#{{{
 er(){
-[ -z "$1" ] && { _usage_; return; }
+[ -z "$1" ] && { _me_usage_; return; }
 local i check
 
-for i in "$@"; do
-    check=$(awk -F ";" '/^'"$i"' /{print $1}' "$MARKEDIT_CACHE")
+for i in $@; do
+    check=$(\awk -F ";" '/^'"$i"' /' $_me_cache_ 2> /dev/null)
 
     if [ -z "$check" ]; then
-		echo -e "[X] - $i none exist mark"
+		echo -e "[X] $i: none exist mark"
     else
-		sed -i "/^$i /d" $MARKEDIT_CACHE
-		echo -e "[-] - $i Deleted "
+		sed -i "/^$i /d" $_me_cache_
+		echo -e "[-] $i: Deleted "
     fi
 done
 }
@@ -94,28 +88,25 @@ done
 # JUMB TO MARK #
 #--------------#{{{
 em(){
-[ -z "$1" -o "$#" -gt 1 ] && { _usage_; return; }
-local mark file root check
+[ -z "$1" -o "$#" -gt 1 ] && { _me_usage_; return; }
+local mark
 
-mark="$1"
-check=$(awk -F ";" '/^'"$1"' /{print $1}' "$MARKEDIT_CACHE")
-file=$(awk -F ";" '/^'"$1"' /{print $2}' "$MARKEDIT_CACHE")
-root=$(awk -F ";" '/^'"$1"' /{print $3}' "$MARKEDIT_CACHE")
+read -A mark < <(\awk -F ";" '/^'"$1"' /{print $1" "$2" "$3}' $_me_cache_ 2> /dev/null)
 
 EDITOR=${EDITOR:-vim}
 
-if [ -z "$check" ]; then
-    echo -e "[X] - $mark none exist mark"
+if [ -z "${mark[1]}" ]; then
+    echo -e "[X] $1: none exist mark"
 else
-    if [ -n "$root" ]; then
-		if [ "$UID" -n 0 ]; then
-			echo -e "[X] - $mark Permission denied"
+    if [ -n "${mark[3]}" ]; then
+		if [ "$UID" -ne 0 ]; then
+			echo -e "[X] $1: Permission denied"
 			exit 1
 		else
-			eval "$EDITOR $file"
+			eval "$EDITOR ${mark[2]}"
 		fi
     else
-		eval "$EDITOR $file"
+		eval "$EDITOR ${mark[2]}"
     fi
 fi
 }
@@ -125,43 +116,40 @@ fi
 # SHOW MARKS #
 #------------#{{{
 es(){
-local check
-
 if [ -z "$1" ]; then
-    column -t -s ';' "$MARKEDIT_CACHE"
+    column -t -s ';' "$_me_cache_"
 else
     for i in "$@"; do
-		check=$(awk -F ";" '/^'"$i"' /{print $0}' "$MARKEDIT_CACHE")
+		local check=$(\awk -F ";" '/^'"$i"' /{print $0}' $_me_cache_ 2> /dev/null)
 
 		if [ -z "$check" ]; then
-			echo -e "[X] - $i None exist Mark"
+			echo -e "[X] $i: None exist Mark"
 		else
 			echo -e "$check" | column -t -s ';'
 		fi
     done
 fi
-}# }}}
+}
+# }}}
 
 #-------------#
 # EDIT A MARK #
 #-------------#{{{
 ee(){
-[ -z "$1" -o "$#" -gt 1 ] && { _usage_; return; }
-local check
-
-check=$(awk -F ";" '/^'"$1"' /{print $0}' "$MARKEDIT_CACHE")
+[ -z "$1" -o "$#" -gt 1 ] && { _me_usage_; return; }
+local check=$(\awk -F ";" '/^'"$1"' /' $_me_cache_ 2> /dev/null)
 
 if [ -z "$check" ]; then
-    echo -e "[X] - $1 None exist Mark"
+    echo -e "[X] $1: None exist Mark"
 else
     # delete the mark
-    sed -i "/$check/d" $MARKGATE_CACHE
+    sed -i "/^$1 /d" $_me_cache_
 
     # edit the mark with zle
     vared check
 
     # rewrite the mark
-    echo $check >> "$MARKEDIT_CACHE"
+    echo $check >> "$_me_cache_"
 fi
 
 }
@@ -171,8 +159,8 @@ fi
 # AUTO COMPLITION  FOR ZSH  #
 #---------------------------#{{{
 function _complete_zsh {
-    if [[ "$(grep -c ".*" $MARKEDIT_CACHE)" -gt 0 ]];then
-		reply=($(awk -F ';' '{print $1" -- "$2}' "$MARKEDIT_CACHE"))
+    if [[ "$(wc -l < $_me_cache_)" -gt 0 ]];then
+		reply=( $(\awk -F ';' '{print $1}' $_me_cache_) )
     fi
 }
 # }}}

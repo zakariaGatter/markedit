@@ -9,7 +9,7 @@ _me_cache_="$HOME/.cache/markedit"
 #--------------#
 # HELP DIALOG  #
 #--------------#{{{
-_me_usage_(){
+_markedit_help_(){
 \cat <<- HELP
 [MARKEDIT] Mark your file To easy Access
 
@@ -37,7 +37,7 @@ HELP
 ea(){
 local mark file root
 
-[ "$#" -lt "2" -o "$#" -gt "3" ] && { _me_usage_; return; }
+[ "$#" -lt "2" -o "$#" -gt "3" ] && { _markedit_help_ && return 0 ; }
 
 if [ "$1" = "_" ]; then
     root="$1" mark="$2" file="$3:P"
@@ -51,7 +51,7 @@ check=$(\awk -F ";" '/^'"$mark"' /' $_me_cache_ 2> /dev/null)
 if [ -n "$check" ]; then
     echo -e "[X] $mark: mark already exist"
 else
-    test -f "$file"  || { echo -e "[X] $file: No such File" ; return 0 ;}
+    test -f "$file"  || { echo -e "[X] $file: No such File" && return 0 ;}
 
     if [ -n "$root" ]; then
 		echo -e "[+] $mark: Added"
@@ -68,7 +68,7 @@ fi
 # DELETE MARK #
 #-------------#{{{
 er(){
-[ -z "$1" ] && { _me_usage_; return; }
+[ -z "$1" ] && { _markedit_help_ && return 0 ; }
 local i check
 
 for i in $@; do
@@ -88,7 +88,7 @@ done
 # JUMB TO MARK #
 #--------------#{{{
 em(){
-[ -z "$1" -o "$#" -gt 1 ] && { _me_usage_; return; }
+[ -z "$1" -o "$#" -gt 1 ] && { _markedit_help_ && return 0 ; }
 local mark
 
 read -A mark < <(\awk -F ";" '/^'"$1"' /{print $1" "$2" "$3}' $_me_cache_ 2> /dev/null)
@@ -136,7 +136,7 @@ fi
 # EDIT A MARK #
 #-------------#{{{
 ee(){
-[ -z "$1" -o "$#" -gt 1 ] && { _me_usage_; return; }
+[ -z "$1" -o "$#" -gt 1 ] && { _markedit_help_ && return 0 ; }
 local check=$(\awk -F ";" '/^'"$1"' /' $_me_cache_ 2> /dev/null)
 
 if [ -z "$check" ]; then
